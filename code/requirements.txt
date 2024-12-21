@@ -1,0 +1,8 @@
+flask
+flask_cors
+torch
+transformers
+rank-bm25
+requests
+pandas
+numpy
