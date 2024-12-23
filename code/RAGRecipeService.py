@@ -72,7 +72,6 @@ DOCUMENTS = [
     "Christmas wreath cookies: Shape cookie dough into wreaths and decorate with red and green icing.",
     "Chocolate hazelnut thumbprints: Make thumbprint cookies filled with chocolate hazelnut spread.",
     "Mint mocha brownies: Add mint extract and espresso powder to brownie batter. Bake at 350°F for 20 minutes."
-
 ]
 
 # Initialize BM25 for retrieval

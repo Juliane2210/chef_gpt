@@ -5,13 +5,6 @@ import json
 # Intent service could be hosted remotely but for this project is hosted locally
 from IntentService import getIntent
 
-# The question resolution service could be hosted remotely or locally.
-
-# QAVacationService is local
-import QAVacationService
-
-import RecipeService
-
 from RAGRecipeService import RAGRecipeGenerator
 
 # WolframAlpha is an example of remote access
@@ -75,13 +68,6 @@ def processInputQuery():
         if (isRecipeIntent(intent_classification)):
             # answer = RecipeService.getRecipes(utterance)
             answer = generator.generate_recipe(utterance)
-            response = response + ".  " + answer
-
-        elif (isLifestyleIntent(intent_classification)):
-            #
-            # Specialized responses for custom category
-            #
-            answer = QAVacationService.getAnswer(utterance)
             response = response + ".  " + answer
 
         elif (isGreetingIntent(intent_classification)):
