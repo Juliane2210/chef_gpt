@@ -7,10 +7,7 @@ def getAnswer(query):
     url = "http://api.wolframalpha.com/v1/spoken"
 
     # Parameters for the query
-    params = {
-        "appid": "QG759U-K96T398GRW",
-        "i": query
-    }
+    params = {"appid": "QG759U-K96T398GRW", "i": query}
     # Make the API call
     response = requests.get(url, params=params)
 
@@ -27,7 +24,7 @@ def main():
     questions = [
         "what is spaghetti",
         "what is the weather in Ottawa",
-        "random question"
+        "random question",
     ]
 
     # Get answers for each question

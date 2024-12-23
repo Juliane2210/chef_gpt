@@ -4,19 +4,17 @@ import warnings
 import numpy as np
 import json
 
-warnings.filterwarnings('ignore')
+warnings.filterwarnings("ignore")
 
 # Load model
-sgd = pickle.load(open('.//code//intent//models//SGD_model_inscope.pkl', 'rb'))
-cv_in = pickle.load(
-    open('.//code//intent//models//Count_vector_inscope.pkl', 'rb'))
-encoder = pickle.load(
-    open('.//code//intent//models//LabelEncoder_inscope.pkl', 'rb'))
+sgd = pickle.load(open(".//code//intent//models//SGD_model_inscope.pkl", "rb"))
+cv_in = pickle.load(open(".//code//intent//models//Count_vector_inscope.pkl", "rb"))
+encoder = pickle.load(open(".//code//intent//models//LabelEncoder_inscope.pkl", "rb"))
 
 
 def getIntent(utterance):
     # Convert data into dataframe
-    data_df = pd.DataFrame({'text': [utterance]})
+    data_df = pd.DataFrame({"text": [utterance]})
     X = cv_in.transform(data_df.text)
 
     # Predict
@@ -24,14 +22,14 @@ def getIntent(utterance):
 
     probabilities = sgd.predict_proba(X)
     confidence_score = max(probabilities[0])
-    confidence_score = round(confidence_score*100)
+    confidence_score = round(confidence_score * 100)
 
     result = encoder.inverse_transform(result)
 
     result_dict = {
         "utterance": utterance,
         "intent": result[0],
-        "confidence": confidence_score
+        "confidence": confidence_score,
     }
     # Convert the dictionary to JSON format
     result_json = json.dumps(result_dict)
@@ -48,7 +46,7 @@ def main():
         "how long will jello last",
         "what time is it",
         "how to cook jello",
-        "what is the weather"
+        "what is the weather",
     ]
 
     for intent in intents:
